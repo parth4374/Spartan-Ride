@@ -6,7 +6,7 @@ import {
 
 export const Main = ({ navigation, route }) => {
   return <>
-   <Text>This is going to be the main screen</Text>
+   <Text>Welcome {route.params.name}</Text>
    <Button
         title="Back to Login"
         onPress={() =>

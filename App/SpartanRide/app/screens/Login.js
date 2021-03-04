@@ -8,34 +8,49 @@ import {
   View
 } from 'react-native'
 
-export const Login = ({ navigation }) => {
-  return (
+export class Login extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      username: '', password: ''
+    }
+  }
+
+  render () {
+    const { navigation } = this.props
+    return (
       <View style={styles.container}>
-      <Image
-      source={require('./appicon.png')}
-      style={styles.image}
-      />
-      <View style={styles.form}>
-      <Text style={styles.textInputHeader}>UNCG Login:</Text>
-      <TextInput
-        placeholder="Email"
-        style={styles.textInput}
-      />
-      <TextInput
-        placeholder="Password"
-        style={styles.textInput}
-      />
-      <Button
-        color="#666666"
-        title="Login"
-        onPress={() =>
-          navigation.navigate('Main')
-        }
-        style={styles.button}
-      />
+        <Image
+        source={require('./appicon.png')}
+        style={styles.image}
+        />
+        <View style={styles.form}>
+          <Text style={styles.textInputHeader}>UNCG Login:</Text>
+          <TextInput
+            placeholder="Email"
+            style={styles.textInput}
+            value={this.state.name}
+            onChangeText={(name) => this.setState({ name })}
+          />
+          <TextInput
+            placeholder="Password"
+            secureTextEntry={true}
+            style={styles.textInput}
+            value={this.state.password}
+            onChangeText={(password) => this.setState({ password })}
+          />
+          <Button
+            color="#666666"
+            title="Login"
+            onPress={() =>
+              navigation.navigate('Main', { name: this.state.name })
+            }
+            style={styles.button}
+          />
+        </View>
       </View>
-      </View>
-  )
+    )
+  }
 }
 
 const styles = StyleSheet.create({
