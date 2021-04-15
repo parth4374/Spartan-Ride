@@ -28,17 +28,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        emailId = findViewById(R.id.editText);
-        password = findViewById(R.id.editText2);
-        btnSignUp = findViewById(R.id.textView);
-        tvSignIn = findViewById(R.id.textView3);
+        emailId = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        btnSignUp = findViewById(R.id.signUp);
+        tvSignIn = findViewById(R.id.signIn);
         btnSignUp.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
-                if(email.isEmpty()){
+                if(email.isEmpty() && pwd.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Fields are empty!",Toast.LENGTH_SHORT).show();
+                }
+                else if(email.isEmpty()){
                     emailId.setError("Please enter email address");
                     emailId.requestFocus();
                 }
@@ -46,15 +49,12 @@ public class MainActivity extends AppCompatActivity {
                     password.setError("Please enter a password");
                     password.requestFocus();
                 }
-                else if(email.isEmpty() && pwd.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Fields are empty!",Toast.LENGTH_SHORT);
-                }
-                else if(!(email.isEmpty() && pwd.isEmpty())){
+                else try {
                     mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
-                                Toast.makeText(MainActivity.this, "Sign Up unsuccessful, please try again",Toast.LENGTH_SHORT);
+                                Toast.makeText(MainActivity.this, "Sign Up unsuccessful, please try again",Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 startActivity(new Intent(MainActivity.this, HomeActivity.class));
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 }
-                else {
+                catch (Exception e) {
                     Toast.makeText(MainActivity.this, "Error Occured!",Toast.LENGTH_SHORT);
                 }
             }
