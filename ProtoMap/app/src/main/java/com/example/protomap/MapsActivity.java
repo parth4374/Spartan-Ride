@@ -50,7 +50,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 new LatLng(36.072995, -79.804083)  // NE bounds
         );
 
-        // Constrain the camera target to the UNCG bounds.
+        // Constrain the camera to the UNCG bounds.
         googleMap.setLatLngBoundsForCameraTarget(campusBounds);
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
