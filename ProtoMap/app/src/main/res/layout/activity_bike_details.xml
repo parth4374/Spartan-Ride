@@ -11,11 +11,10 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"
-        android:text="Marker Title"
+        android:textSize="30sp"
+        android:text="@string/marker_title"
         android:textStyle="bold"
-        android:id="@+id/marker"
-        />
+        android:id="@+id/marker" />
 
     <TextView
         android:id="@+id/availability"
@@ -23,17 +22,37 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:layout_centerInParent="true"
-        android:text="Available"
+        android:text="@string/available"
         android:textColor="#4CAF50"
         android:textSize="36sp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/rentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:text="Rent" />
+        android:text="@string/rent" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="170dp"
+        android:layout_height="156dp"
+        android:layout_above="@+id/availability"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="119dp"
+        android:layout_marginBottom="26dp"
+        app:srcCompat="@drawable/download__1_" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="161dp"
+        android:layout_height="143dp"
+        android:layout_alignBottom="@+id/availability"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="-219dp"
+        app:srcCompat="@drawable/_200px_uncg_spartans_logo_svg" />
 
 </RelativeLayout>
