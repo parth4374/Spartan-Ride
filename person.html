@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="default">
+    <head>
+        <title>Person List</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Person</a>
+                </h3>
+                <h2>Person List</h2>
+                <div class="table-responsive">
+                    <table class="table" id="person-table">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Affiliation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="person : ${persons}">
+                                <td><a th:text="${person.firstName}" th:href="@{'/show/' + ${person.id}}"></a></td>
+                                <td th:text="${person.lastName}"></td>
+                                <td th:text="${person.email}"></td>
+                                <td th:text="${person.affiliation}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
