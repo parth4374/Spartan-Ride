@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="default">
+    <head>
+        <title>Show Person</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/person" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> Person</a>
+                </h3>
+                <h2 th:text="${person.firstName}"></h2>
+                <dl class="list">
+                    <dt>Person Email</dt>
+                    <dd th:text="${person.email}"></dd>
+                    <dt>Person Affiliation</dt>
+                    <dd th:text="${person.affiliation}"></dd>
+                </dl>
+                <form action="/delete">
+                    <input type="hidden" name="id" th:value="${person.id}" />
+                    <h2><input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Are you sure?');" />
+                        <a th:href="@{'/edit/' + ${person.id}}" class="btn btn-warning">Edit</a></h2>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
