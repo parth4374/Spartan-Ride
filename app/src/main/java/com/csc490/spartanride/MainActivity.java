@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import android.util.Log;
+
 public class MainActivity extends AppCompatActivity {
     public EditText emailId, password;
     Button btnSignUp;
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                emailId.setError(null);
+                password.setError(null);
+
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if(email.isEmpty() && pwd.isEmpty()){
@@ -54,26 +59,25 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
+                                Log.d("debug","Signup Unsuccesful");
                                 Toast.makeText(MainActivity.this, "Sign Up unsuccessful, please try again",Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                startActivity(new Intent(MainActivity.this, MapsActivity.class));
                             }
                         }
                     });
                 }
                 catch (Exception e) {
+                    Log.d("debug","Signup Error Occured!");
                     Toast.makeText(MainActivity.this, "Error Occured!",Toast.LENGTH_SHORT);
                 }
             }
         });
 
-        tvSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent (MainActivity.this,LoginActivity.class);
-                startActivity(i);
-            }
+        tvSignIn.setOnClickListener(v -> {
+            Intent i = new Intent (MainActivity.this,LoginActivity.class);
+            startActivity(i);
         });
     }
 }
