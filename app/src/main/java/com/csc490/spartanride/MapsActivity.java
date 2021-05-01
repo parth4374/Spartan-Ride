@@ -1,4 +1,4 @@
-package com.example.protomap;
+package com.csc490.spartanride;
 
 import androidx.fragment.app.FragmentActivity;
 

@@ -5,4 +5,9 @@
     <string name="sign_up">sign up</string>
     <string name="already_have_an_account_sign_in_here">Already have an account? Sign in here</string>
     <string name="spartanride_icon">SpartanRide Icon</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="rent">Rent</string>
+    <string name="available">Available</string>
+    <string name="marker_title">Marker Title</string>
+    <string name="bike">Bike</string>
 </resources>
