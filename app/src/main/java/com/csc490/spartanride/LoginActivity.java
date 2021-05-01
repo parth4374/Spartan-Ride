@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (mFirebaseAuth != null){
+                if (mFirebaseUser != null){
                     Toast.makeText(LoginActivity.this, "You are logged in.", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this,MapsActivity.class);
                     startActivity(i);
@@ -57,6 +57,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
+
+                emailId.setError(null);
+                password.setError(null);
+
+
                 if(email.isEmpty()){
                     emailId.setError("Please enter email address");
                     emailId.requestFocus();
@@ -76,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "Login Error, Please login again.",Toast.LENGTH_SHORT);
                             }
                             else {
-                                Intent intToHome = new Intent(LoginActivity.this, HomeActivity.class);
+                                Intent intToHome = new Intent(LoginActivity.this, MapsActivity.class);
                                 startActivity(intToHome);
                             }
                         }
